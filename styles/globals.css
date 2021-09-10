@@ -14,3 +14,14 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --status-alive-color: rgb(85, 204, 68);
+  --status-dead-color: rgb(214, 61, 46);
+  --status-unknown-color: rgb(158, 158, 158);
+  --text-gray: rgb(158, 158, 158);
+}
+
+.text-gray {
+  color: var(--text-gray);
+}

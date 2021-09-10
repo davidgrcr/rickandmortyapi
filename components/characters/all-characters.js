@@ -1,5 +1,6 @@
 import classes from "./all-character.module.css";
 
+import CharacterItem from "./character-item";
 import Image from "next/image";
 
 export default function AllCharacters(props) {
@@ -8,12 +9,15 @@ export default function AllCharacters(props) {
       <h1>All Characters</h1>
       <ul>
         {props.characters.map((ch) => (
-          <li key={ch.id}>
-            <span>{ch.name}</span>
-            <img src={ch.image} alt={ch.name} width={150} />
-          </li>
+          <CharacterItem key={ch.id} {...ch} />
         ))}
       </ul>
+      <style jsx>{`
+          h1 {
+            text-align: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }
