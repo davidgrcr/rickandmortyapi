@@ -31,6 +31,11 @@ function MainNavigation() {
           )}
           {session && (
             <li>
+              <Link href="/characters">Characters</Link>
+            </li>
+          )}
+          {session && (
+            <li>
               <button onClick={logoutHandler}>Logout</button>
             </li>
           )}
