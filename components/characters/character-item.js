@@ -6,7 +6,7 @@ import ArrowRightIcon from "../icons/arrow-right-icon";
 export default function CharacterItem(props) {
   const { name, image, status, location, id, species } = props;
 
-  const exploreLink = `/character/${id}`;
+  const exploreLink = `/characters/${id}`;
 
   return (
     <li className={classes.item}>
