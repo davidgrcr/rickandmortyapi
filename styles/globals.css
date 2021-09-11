@@ -25,3 +25,7 @@ a {
 .text-gray {
   color: var(--text-gray);
 }
+
+main {
+  height: calc(100vh - 5rem);
+}

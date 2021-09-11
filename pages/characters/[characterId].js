@@ -3,16 +3,27 @@ import Head from "next/head";
 import { getSession } from "next-auth/client";
 import { getCharacterById } from "../../lib/api-util";
 
-import AllCharacters from "./../../components/characters/all-characters";
-import { useRouter } from "next/dist/client/router";
-import CharacterItem from "../../components/characters/character-item";
+import { useEffect, useState } from "react";
+
+import { useRouter } from "next/router";
 import CharacterSummary from "../../components/characters/character-summary";
 import CharacterLogistics from "../../components/characters/character-logistics";
 
-export default function DetailCharactersPage(props) {
+export default function DetailCharactersPage() {
   const router = useRouter();
+  const [character, setCharacter] = useState({});
+  const characterId = router.query.characterId;
 
-  const { character = {} } = props;
+  useEffect(async () => {
+    setCharacter(await getCharacterById(characterId));
+  }, [characterId]);
+
+  useEffect(() => {
+    getSession().then((session) => {
+      if (!session) router.replace("/auth");
+    });
+  }, [router]);
+
   return (
     <>
       <Head>
@@ -27,11 +38,12 @@ export default function DetailCharactersPage(props) {
     </>
   );
 }
-
+/* 
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
   const characterId = context.params.id;
 
+  console.log("characterId", characterId, context.params);
   if (!session) {
     return {
       redirect: {
@@ -49,4 +61,4 @@ export async function getServerSideProps(context) {
       session,
     },
   };
-}
+} */
