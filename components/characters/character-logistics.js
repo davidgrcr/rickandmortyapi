@@ -5,15 +5,7 @@ import { useEffect, useState } from "react";
 import { getEpisodeById } from "../../lib/api-util";
 
 function CharacterLogistics(props) {
-  const {
-    name,
-    image,
-    status,
-    location,
-    species,
-    gender,
-    episode = [],
-  } = props;
+  const { name, image, location, episode = [] } = props;
   const [firstSeeIn, setFirstSeenIn] = useState("");
 
   useEffect(() => {
@@ -31,7 +23,7 @@ function CharacterLogistics(props) {
       </div>
       <ul className={classes.list}>
         <LogisticsItem title="Last known location:">
-          {location.name}
+          {location?.name}
         </LogisticsItem>
         <LogisticsItem title="First seen in:"> {firstSeeIn}</LogisticsItem>
       </ul>
